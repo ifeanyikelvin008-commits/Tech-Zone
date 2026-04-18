@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style/style.css">
+    <title>Sign up</title>
+</head>
+<body>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create your TECH ZONE account and start shopping for the latest electronics">
+    <title>TECH ZONE | Create Account</title>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="signup-body">
+    <div class="signup-container">
+        <div class="signup-card">
+            <!-- Header -->
+            <div class="signup-header">
+                <a href="tech Zone.html" class="logo-link">
+                    <h1 class="signup-logo">TECH <span class="highlight">ZONE</span></h1>
+                </a>
+                <h2 class="welcome-title">Create Account ✨</h2>
+                <p class="welcome-text">Join TECH ZONE and start shopping for the latest tech</p>
+            </div>
+
+            <!-- Signup Form -->
+            <form class="signup-form" id="signupForm">
+                <!-- Username Field -->
+                <div class="form-group">
+                    <label for="username" class="form-label">
+                        <i class="fas fa-user"></i>
+                        Username
+                    </label>
+                    <input type="text" 
+                           id="username" 
+                           name="username" 
+                           class="form-input" 
+                           placeholder="Choose a username"
+                           required>
+                    <span class="input-hint">Minimum 3 characters, no special characters</span>
+                    <span class="input-error" id="usernameError"></span>
+                </div>
+
+                <!-- Email Field -->
+                <div class="form-group">
+                    <label for="email" class="form-label">
+                        <i class="fas fa-envelope"></i>
+                        Email Address
+                    </label>
+                    <input type="email" 
+                           id="email" 
+                           name="email" 
+                           class="form-input" 
+                           placeholder="Enter your email"
+                           required>
+                    <span class="input-error" id="emailError"></span>
+                </div>
+
+                <!-- Password Field -->
+                <div class="form-group">
+                    <label for="password" class="form-label">
+                        <i class="fas fa-lock"></i>
+                        Password
+                    </label>
+                    <div class="password-wrapper">
+                        <input type="password" 
+                               id="password" 
+                               name="password" 
+                               class="form-input password-input" 
+                               placeholder="Create a password"
+                               required>
+                        <button type="button" class="toggle-password" data-target="password" aria-label="Toggle password visibility">
+                            <i class="far fa-eye"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- Password Strength Meter -->
+                    <div class="password-strength">
+                        <div class="strength-bars">
+                            <div class="strength-bar" id="bar1"></div>
+                            <div class="strength-bar" id="bar2"></div>
+                            <div class="strength-bar" id="bar3"></div>
+                            <div class="strength-bar" id="bar4"></div>
+                        </div>
+                        <span class="strength-text" id="strengthText">Enter password</span>
+                    </div>
+                    
+                    <!-- Password Requirements -->
+                    <div class="password-requirements">
+                        <p class="requirement" id="reqLength">
+                            <i class="far fa-circle"></i> At least 8 characters
+                        </p>
+                        <p class="requirement" id="reqUpper">
+                            <i class="far fa-circle"></i> At least 1 uppercase letter
+                        </p>
+                        <p class="requirement" id="reqLower">
+                            <i class="far fa-circle"></i> At least 1 lowercase letter
+                        </p>
+                        <p class="requirement" id="reqNumber">
+                            <i class="far fa-circle"></i> At least 1 number
+                        </p>
+                        <p class="requirement" id="reqSpecial">
+                            <i class="far fa-circle"></i> At least 1 special character
+                        </p>
+                    </div>
+                    <span class="input-error" id="passwordError"></span>
+                </div>
+
+                <!-- Confirm Password Field -->
+                <div class="form-group">
+                    <label for="confirmPassword" class="form-label">
+                        <i class="fas fa-lock"></i>
+                        Confirm Password
+                    </label>
+                    <div class="password-wrapper">
+                        <input type="password" 
+                               id="confirmPassword" 
+                               name="confirmPassword" 
+                               class="form-input password-input" 
+                               placeholder="Confirm your password"
+                               required>
+                        <button type="button" class="toggle-password" data-target="confirmPassword" aria-label="Toggle password visibility">
+                            <i class="far fa-eye"></i>
+                        </button>
+                    </div>
+                    <span class="input-error" id="confirmError"></span>
+                </div>
+
+                <!-- Terms & Conditions -->
+                <div class="form-options">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="terms" class="checkbox" id="termsCheckbox" required>
+                        <span class="checkbox-text">
+                            I agree to the <a href="terms.html" class="terms-link">Terms of Service</a> and 
+                            <a href="privacy.html" class="terms-link">Privacy Policy</a>
+                        </span>
+                    </label>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="signup-btn" id="signupBtn">
+                    <span>Create Account</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+
+            <!-- Divider -->
+            <div class="divider">
+                <span class="divider-text">or sign up with</span>
+            </div>
+
+            <!-- Social Signup -->
+            <div class="social-signup">
+                <button class="social-btn google-btn">
+                    <img src="/thumbnails/7123025_logo_google_g_icon.png" 
+                         alt="Google" 
+                         class="google-icon">
+                    <span>Google</span>
+                </button>
+                
+                <button class="social-btn facebook-btn">
+                    <i class="fab fa-facebook-f"></i>
+                    <span>Facebook</span>
+                </button>
+
+                <button class="social-btn apple-btn">
+                    <i class="fab fa-apple"></i>
+                    <span>Apple</span>
+                </button>
+            </div>
+
+            <!-- Login Link -->
+            <div class="login-prompt">
+                <p>Already have an account? <a href="login.html" class="login-link">Sign in</a></p>
+            </div>
+
+            <!-- Back to Home -->
+            <a href="tech Zone.html" class="back-home">
+                <i class="fas fa-chevron-left"></i>
+                Back to Home
+            </a>
+        </div>
+
+        <!-- Decorative Elements -->
+        <div class="signup-decoration">
+            <div class="decoration-circle circle-1"></div>
+            <div class="decoration-circle circle-2"></div>
+            <div class="decoration-circle circle-3"></div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="signup.js"></script>
+</body>
+</html>
+</body>
+</html>

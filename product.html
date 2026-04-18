@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/style/style.css">
+        <script src="/style/script.js"></script>
+        <title>Product</title>
+    </head>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse our wide selection of electronics at TECH ZONE">
+    <title>TECH ZONE | Products</title>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="products-page">
+    <!-- Header -->
+    <header class="product-header">
+        <div class="header-container">
+            <div class="logo-section">
+                <a href="tech Zone.html" class="logo-link">
+                    <h1 class="product-logo">TECH <span class="highlight">ZONE</span></h1>
+                </a>
+                <h2 class="page-title">Products</h2>
+            </div>
+
+            <div class="header-actions">
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <form class="search-form" id="productSearch">
+                        <input type="search" 
+                               class="search-input" 
+                               placeholder="Search products..." 
+                               aria-label="Search products">
+                        <button type="submit" class="search-btn" aria-label="Submit search">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- User Menu -->
+                <div class="user-menu">
+                   <a href="profile.html"> <button class="user-btn" id="userMenuBtn" aria-label="User menu">
+                        <img src="/thumbnails/icons8-user-48.png" 
+                             alt="User profile" 
+                             class="user-icon"></a>
+                    </button>
+                    
+                    <!-- Dropdown Menu -->
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="profile.html" class="dropdown-item">
+                            <i class="fas fa-user"></i> My Profile
+                        </a>
+                        <a href="orders.html" class="dropdown-item">
+                            <i class="fas fa-box"></i> Orders
+                        </a>
+                        <a href="wishlist.html" class="dropdown-item">
+                            <i class="fas fa-heart"></i> Wishlist
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="login.html" class="dropdown-item">
+                            <i class="fas fa-sign-in-alt"></i> Sign In
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Cart Icon -->
+                <a href="cart.html" class="cart-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-badge">0</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="product-nav">
+            <div class="nav-container">
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active">All Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Phones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Laptops</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Desktops</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Audio & Wearables</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Gaming Console</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Accessories</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="products-main">
+        <div class="products-container">
+            <!-- Sidebar Filters -->
+            <aside class="filters-sidebar">
+                <div class="filters-header">
+                    <h3 class="filters-title">
+                        <i class="fas fa-filter"></i>
+                        Filters
+                    </h3>
+                    <button class="clear-filters">Clear all</button>
+                </div>
+
+                <!-- Category Filter -->
+                <div class="filter-section">
+                    <h4 class="filter-section-title">
+                        Category
+                        <i class="fas fa-chevron-down"></i>
+                    </h4>
+                    <div class="filter-options">
+                        <label class="filter-checkbox">
+                            <input type="checkbox" class="checkbox" checked>
+                            <span class="checkbox-label">Smartphones <span class="count">(24)</span></span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" class="checkbox">
+                            <span class="checkbox-label">Laptops <span class="count">(18)</span></span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" class="checkbox">
+                            <span class="checkbox-label">Desktops <span class="count">(12)</span></span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" class="checkbox">
+                            <span class="checkbox-label">Audio <span class="count">(32)</span></span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" class="checkbox">
+                            <span class="checkbox-label">Gaming <span class="count">(15)</span></span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" class="checkbox">
+                            <span class="checkbox-label">Accessories <span class="count">(41)</span></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Price Range Filter -->
+                <div class="filter-section">
+                    <h4 class="filter-section-title">
+                        Price Range
+                        <i class="fas fa-chevron-down"></i>
+                    </h4>
+                    <div class="filter-options">
+                        <div class="price-range">
+                            <div class="price-inputs">
+                                <div class="price-field">
+                                    <label>Min</label>
+                                    <input type="number" class="price-input" placeholder="$0" min="0">
+                                </div>
+                                <span class="price-separator">-</span>
+                                <div class="price-field">
+                                    <label>Max</label>
+                                    <input type="number" class="price-input" placeholder="$5000" min="0">
+                                </div>
+                            </div>
+                            <button class="apply-price">Apply</button>
+                        </div>
+                        
+                        <div class="price-presets">
+                            <button class="price-preset">Under $100</button>
+                            <button class="price-preset">$100 - $500</button>
+                            <button class="price-preset">$500 - $1000</button>
+                            <button class="price-preset">Over $1000</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Brand Filter -->
+                <div class="filter-section">
+                    <h4 class="filter-section-title">
+                        Brand
+                        <i class="fas fa-chevron-down"></i>
+                    </h4>
+                    <div class="filter-options">
+                        <label class="filter-checkbox">
+                            <input type="checkbox" class="checkbox">
+                            <span class="checkbox-label">Apple <span class="count">(18)</span></span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" class="checkbox">
+                            <span class="checkbox-label">Samsung <span class="count">(22)</span></span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" class="checkbox">
+                            <span class="checkbox-label">Dell <span class="count">(12)</span></span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" class="checkbox">
+                            <span class="checkbox-label">HP <span class="count">(15)</span></span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" class="checkbox">
+                            <span class="checkbox-label">Sony <span class="count">(9)</span></span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" class="checkbox">
+                            <span class="checkbox-label">Microsoft <span class="count">(7)</span></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Rating Filter -->
+                <div class="filter-section">
+                    <h4 class="filter-section-title">
+                        Customer Rating
+                        <i class="fas fa-chevron-down"></i>
+                    </h4>
+                    <div class="filter-options">
+                        <label class="filter-checkbox">
+                            <input type="checkbox" class="checkbox">
+                            <span class="checkbox-label">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                (5)
+                            </span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" class="checkbox">
+                            <span class="checkbox-label">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                & Up (12)
+                            </span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" class="checkbox">
+                            <span class="checkbox-label">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                & Up (28)
+                            </span>
+                        </label>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Products Grid -->
+            <div class="products-content">
+                <!-- Results Header -->
+                <div class="results-header">
+                    <p class="results-count">Showing 1-12 of 142 products</p>
+                    
+                    <div class="sort-options">
+                        <label for="sort">Sort by:</label>
+                        <select id="sort" class="sort-select">
+                            <option value="featured">Featured</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="newest">Newest First</option>
+                            <option value="rating">Top Rated</option>
+                        </select>
+                    </div>
+
+                    <div class="view-options">
+                        <button class="view-btn active" data-view="grid">
+                            <i class="fas fa-th-large"></i>
+                        </button>
+                        <button class="view-btn" data-view="list">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="products-grid" id="productsGrid">
+                    <!-- Product Card 1 - iPhone 15 Pro -->
+                    <div class="product-card">
+                        <div class="product-badge bestseller">Best Seller</div>
+                        <div class="product-image">
+                            <img src="/iphones/Screenshot_20251124-144426.png" 
+                                 alt="iPhone 15 Pro">
+                            <button class="quick-view" aria-label="Quick view">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="product-details">
+                            <h3 class="product-title">iPhone 15 Pro</h3>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span class="rating-count">(128)</span>
+                            </div>
+                            <p class="product-description">6.1" Super Retina XDR display, A17 Pro chip</p>
+                            <div class="product-price">
+                                <span class="current-price">$1,170</span>
+                                <span class="original-price">$1,299</span>
+                                <span class="discount">-10%</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="add-to-cart">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    Add to Cart
+                                </button>
+                                <button class="wishlist-btn" aria-label="Add to wishlist">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 2 - Samsung Galaxy S22 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="/thumbnails/Screenshot_20251031-130715.png" 
+                                 alt="Samsung Galaxy S22">
+                            <button class="quick-view" aria-label="Quick view">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="product-details">
+                            <h3 class="product-title">Samsung Galaxy S22</h3>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span class="rating-count">(95)</span>
+                            </div>
+                            <p class="product-description">6.1" Dynamic AMOLED 2X, 50MP camera</p>
+                            <div class="product-price">
+                                <span class="current-price">$870</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="add-to-cart">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    Add to Cart
+                                </button>
+                                <button class="wishlist-btn" aria-label="Add to wishlist">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 3 - Oraimo Earpods -->
+                    <div class="product-card">
+                        <div class="product-badge hot">Hot</div>
+                        <div class="product-image">
+                            <img src="/thumbnails/Screenshot_20250920-222329 (1).png" 
+                                 alt="Oraimo Earpods">
+                            <button class="quick-view" aria-label="Quick view">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="product-details">
+                            <h3 class="product-title">Oraimo Earpods</h3>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="rating-count">(342)</span>
+                            </div>
+                            <p class="product-description">Wireless earbuds with charging case</p>
+                            <div class="product-price">
+                                <span class="current-price">$80</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="add-to-cart">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    Add to Cart
+                                </button>
+                                <button class="wishlist-btn" aria-label="Add to wishlist">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 4 - iPad 10th Gen -->
+                    <div class="product-card">
+                        <div class="product-badge new">New</div>
+                        <div class="product-image">
+                            <img src="/thumbnails/Screenshot_20251110-022934.png" 
+                                 alt="iPad 10th Generation">
+                            <button class="quick-view" aria-label="Quick view">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="product-details">
+                            <h3 class="product-title">iPad 10th Gen</h3>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span class="rating-count">(67)</span>
+                            </div>
+                            <p class="product-description">10.9" Liquid Retina display, A14 Bionic</p>
+                            <div class="product-price">
+                                <span class="current-price">$1,790</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="add-to-cart">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    Add to Cart
+                                </button>
+                                <button class="wishlist-btn" aria-label="Add to wishlist">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 5 - Joga Power Bank -->
+                    <div class="product-card">
+                        <div class="product-badge sale">Sale</div>
+                        <div class="product-image">
+                            <img src="/thumbnails/IMG-20251024-WA0047.jpg" 
+                                 alt="Joga Pro Power Bank">
+                            <button class="quick-view" aria-label="Quick view">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="product-details">
+                            <h3 class="product-title">Joga Pro Power Bank</h3>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span class="rating-count">(56)</span>
+                            </div>
+                            <p class="product-description">20000mAh, Fast charging, USB-C</p>
+                            <div class="product-price">
+                                <span class="current-price">$20</span>
+                                <span class="original-price">$35</span>
+                                <span class="discount">-43%</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="add-to-cart">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    Add to Cart
+                                </button>
+                                <button class="wishlist-btn" aria-label="Add to wishlist">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 6 - Zealot Speaker -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="/thumbnails/Screenshot_20251029-114059.png" 
+                                 alt="Zealot Speaker">
+                            <button class="quick-view" aria-label="Quick view">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="product-details">
+                            <h3 class="product-title">Zealot Speaker</h3>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="rating-count">(203)</span>
+                            </div>
+                            <p class="product-description">Bluetooth 5.0, 20W, Waterproof</p>
+                            <div class="product-price">
+                                <span class="current-price">$100</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="add-to-cart">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    Add to Cart
+                                </button>
+                                <button class="wishlist-btn" aria-label="Add to wishlist">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button class="page-btn prev" disabled>
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn">2</button>
+                    <button class="page-btn">3</button>
+                    <button class="page-btn">4</button>
+                    <span class="page-dots">...</span>
+                    <button class="page-btn">12</button>
+                    <button class="page-btn next">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="product-footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>TECH <span class="highlight">ZONE</span></h3>
+                <p>Your premier destination for the latest electronics and gadgets.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="products.js"></script>
+</body>
+</html>
+</html>

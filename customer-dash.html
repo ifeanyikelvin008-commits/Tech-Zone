@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - TECH ZONE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: #f3f4f6;
+        }
+        
+        .dashboard-container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        
+        .sidebar-header {
+            padding: 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .sidebar-header h2 {
+            font-size: 1.5rem;
+        }
+        
+        .sidebar-header .highlight {
+            color: #3b82f6;
+        }
+        
+        .user-info {
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .user-avatar {
+            width: 80px;
+            height: 80px;
+            background: #3b82f6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1rem;
+        }
+        
+        .user-name {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .user-email {
+            font-size: 0.875rem;
+            opacity: 0.7;
+        }
+        
+        .nav-menu {
+            padding: 1rem 0;
+        }
+        
+        .nav-item {
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #94a3b8;
+        }
+        
+        .nav-item:hover, .nav-item.active {
+            background: rgba(59,130,246,0.2);
+            color: white;
+        }
+        
+        .nav-item i {
+            width: 24px;
+        }
+        
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 2rem;
+        }
+        
+        .top-bar {
+            background: white;
+            padding: 1rem 2rem;
+            border-radius: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .page-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .logout-btn {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+        }
+        
+        /* Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .stat-card h3 {
+            color: #6b7280;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1f2937;
+        }
+        
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .product-image {
+            height: 200px;
+            background: #f3f4f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        
+        .product-info {
+            padding: 1rem;
+        }
+        
+        .product-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-price {
+            color: #3b82f6;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .btn-cart, .btn-wishlist {
+            flex: 1;
+            padding: 0.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-cart {
+            background: #0f172a;
+            color: white;
+        }
+        
+        .btn-cart:hover {
+            background: #3b82f6;
+        }
+        
+        .btn-wishlist {
+            background: #f3f4f6;
+        }
+        
+        /* Orders Table */
+        .orders-table, .cart-table {
+            width: 100%;
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+        
+        .orders-table th, .cart-table th {
+            background: #f3f4f6;
+            padding: 1rem;
+            text-align: left;
+        }
+        
+        .orders-table td, .cart-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .status-paid { background: #d1fae5; color: #065f46; }
+        .status-pending { background: #fed7aa; color: #92400e; }
+        .status-shipped { background: #dbeafe; color: #1e40af; }
+        .status-delivered { background: #d1fae5; color: #065f46; }
+        
+        .view-section {
+            display: none;
+        }
+        
+        .view-section.active {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+                z-index: 1000;
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            .main-content {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>TECH <span class="highlight">ZONE</span></h2>
+            </div>
+            <div class="user-info" id="userInfo">
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="user-name" id="userName">Loading...</div>
+                <div class="user-email" id="userEmail">Loading...</div>
+            </div>
+            <div class="nav-menu">
+                <div class="nav-item active" data-section="dashboard">
+                    <i class="fas fa-tachometer-alt"></i> Dashboard
+                </div>
+                <div class="nav-item" data-section="products">
+                    <i class="fas fa-store"></i> Shop
+                </div>
+                <div class="nav-item" data-section="cart">
+                    <i class="fas fa-shopping-cart"></i> Cart <span id="cartCount">0</span>
+                </div>
+                <div class="nav-item" data-section="orders">
+                    <i class="fas fa-box"></i> My Orders
+                </div>
+                <div class="nav-item" data-section="wishlist">
+                    <i class="fas fa-heart"></i> Wishlist
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="top-bar">
+                <h1 class="page-title" id="pageTitle">Dashboard</h1>
+                <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+            
+            <div id="dashboardSection" class="view-section active">
+                <div class="stats-grid" id="statsGrid">
+                    <div class="stat-card">
+                        <h3>Total Orders</h3>
+                        <div class="stat-number" id="totalOrders">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Spent</h3>
+                        <div class="stat-number" id="totalSpent">$0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Wishlist Items</h3>
+                        <div class="stat-number" id="wishlistCount">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Cart Items</h3>
+                        <div class="stat-number" id="cartItemsCount">0</div>
+                    </div>
+                </div>
+                <div class="stat-card" style="margin-top: 1rem;">
+                    <h3>Recent Orders</h3>
+                    <div id="recentOrders"></div>
+                </div>
+            </div>
+            
+            <div id="productsSection" class="view-section">
+                <div class="products-grid" id="productsGrid"></div>
+            </div>
+            
+            <div id="cartSection" class="view-section">
+                <div id="cartItems"></div>
+                <div id="checkoutSection" style="margin-top: 2rem;"></div>
+            </div>
+            
+            <div id="ordersSection" class="view-section">
+                <div id="ordersList"></div>
+            </div>
+            
+            <div id="wishlistSection" class="view-section">
+                <div class="products-grid" id="wishlistGrid"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="toast" class="toast"></div>
+    
+    <style>
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #0f172a;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            z-index: 9999;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: all 0.3s;
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .toast.success { background: #10b981; }
+        .toast.error { background: #ef4444; }
+        
+        .checkout-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .checkout-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            max-width: 500px;
+            width: 90%;
+        }
+        .checkout-card input, .checkout-card select, .checkout-card textarea {
+            width: 100%;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+        }
+        .payment-methods {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .payment-method {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.5rem;
+            text-align: center;
+            cursor: pointer;
+        }
+        .payment-method.selected {
+            border-color: #3b82f6;
+            background: #eff6ff;
+        }
+    </style>
+    
+    <script>
+        let API_URL = 'http://localhost:3000/api';
+        let token = localStorage.getItem('token');
+        let currentUser = null;
+        let cart = [];
+        let wishlist = [];
+        let products = [];
+        
+        async function apiCall(endpoint, options = {}) {
+            const response = await fetch(`${API_URL}${endpoint}`, {
+                ...options,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                    ...options.headers
+                }
+            });
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.error || 'API call failed');
+            }
+            return response.json();
+        }
+        
+        async function loadUserData() {
+            try {
+                const user = JSON.parse(localStorage.getItem('user'));
+                currentUser = user;
+                document.getElementById('userName').textContent = user.username;
+                document.getElementById('userEmail').textContent = user.email;
+                
+                await Promise.all([loadProducts(), loadCart(), loadWishlist(), loadOrders()]);
+                updateDashboard();
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        
+        async function loadProducts() {
+            const data = await apiCall('/products');
+            products = data;
+            renderProducts();
+            return data;
+        }
+        
+        async function loadCart() {
+            const data = await apiCall('/cart');
+            cart = data;
+            updateCartCount();
+            renderCart();
+            return data;
+        }
+        
+        async function loadWishlist() {
+            const data = await apiCall('/wishlist');
+            wishlist = data;
+            document.getElementById('wishlistCount').textContent = wishlist.length;
+            renderWishlist();
+            return data;
+        }
+        
+        async function loadOrders() {
+            const data = await apiCall('/orders');
+            renderOrders(data);
+            return data;
+        }
+        
+        function updateDashboard() {
+            const totalSpent = orders.reduce((sum, o) => sum + o.total_amount, 0);
+            document.getElementById('totalOrders').textContent = orders.length;
+            document.getElementById('totalSpent').textContent = `$${totalSpent}`;
+            document.getElementById('wishlistCount').textContent = wishlist.length;
+            document.getElementById('cartItemsCount').textContent = cart.reduce((s, i) => s + i.quantity, 0);
+            
+            const recent = orders.slice(0, 5);
+            document.getElementById('recentOrders').innerHTML = recent.map(o => `
+                <div style="padding: 1rem; border-bottom: 1px solid #e5e7eb;">
+                    <strong>Order #${o.order_number}</strong> - $${o.total_amount} - 
+                    <span class="status status-${o.status}">${o.status}</span>
+                </div>
+            `).join('') || '<p>No orders yet</p>';
+        }
+        
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = products.map(p => `
+                <div class="product-card">
+                    <div class="product-image"><i class="fas fa-mobile-alt fa-3x"></i></div>
+                    <div class="product-info">
+                        <div class="product-name">${p.name}</div>
+                        <div class="product-price">$${p.price}</div>
+                        <div class="product-actions">
+                            <button class="btn-cart" onclick="addToCart(${p.id})"><i class="fas fa-cart-plus"></i> Cart</button>
+                            <button class="btn-wishlist" onclick="toggleWishlist(${p.id})">
+                                <i class="fas ${wishlist.some(w => w.product_id === p.id) ? 'fa-heart' : 'fa-heart-o'}"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function renderCart() {
+            const container = document.getElementById('cartItems');
+            if (cart.length === 0) {
+                container.innerHTML = '<div class="stat-card">Your cart is empty</div>';
+                document.getElementById('checkoutSection').innerHTML = '';
+                return;
+            }
+            
+            let total = 0;
+            container.innerHTML = `
+                <table class="cart-table">
+                    <thead><tr><th>Product</th><th>Price</th><th>Quantity</th><th>Total</th><th></th></tr></thead>
+                    <tbody>
+                        ${cart.map(item => {
+                            total += item.price * item.quantity;
+                            return `
+                                <tr>
+                                    <td>${item.name}</td>
+                                    <td>$${item.price}</td>
+                                    <td>
+                                        <button onclick="updateCartQuantity(${item.id}, ${item.quantity - 1})">-</button>
+                                        ${item.quantity}
+                                        <button onclick="updateCartQuantity(${item.id}, ${item.quantity + 1})">+</button>
+                                    </td>
+                                    <td>$${(item.price * item.quantity).toFixed(2)}</td>
+                                    <td><button onclick="removeFromCart(${item.id})" style="color:red;">Remove</button></td>
+                                </tr>
+                            `;
+                        }).join('')}
+                    </tbody>
+                </table>
+            `;
+            
+            document.getElementById('checkoutSection').innerHTML = `
+                <div class="stat-card">
+                    <h3>Total: $${total.toFixed(2)}</h3>
+                    <button class="btn-cart" style="background:#3b82f6; padding:0.75rem 2rem; margin-top:1rem;" onclick="showCheckout()">
+                        Proceed to Checkout
+                    </button>
+                </div>
+            `;
+        }
+        
+        function renderWishlist() {
+            const grid = document.getElementById('wishlistGrid');
+            const wishlistProducts = products.filter(p => wishlist.some(w => w.product_id === p.id));
+            grid.innerHTML = wishlistProducts.map(p => `
+                <div class="product-card">
+                    <div class="product-image"><i class="fas fa-mobile-alt fa-3x"></i></div>
+                    <div class="product-info">
+                        <div class="product-name">${p.name}</div>
+                        <div class="product-price">$${p.price}</div>
+                        <div class="product-actions">
+                            <button class="btn-cart" onclick="addToCart(${p.id})">Add to Cart</button>
+                            <button class="btn-wishlist" onclick="toggleWishlist(${p.id})"><i class="fas fa-heart" style="color:#ef4444;"></i></button>
+                        </div>
+                    </div>
+                </div>
+            `).join('') || '<div class="stat-card">Your wishlist is empty</div>';
+        }
+        
+        function renderOrders(ordersList) {
+            orders = ordersList;
+            const container = document.getElementById('ordersList');
+            container.innerHTML = ordersList.map(o => `
+                <div class="stat-card" style="margin-bottom: 1rem;">
+                    <div style="display: flex; justify-content: space-between;">
+                        <strong>Order #${o.order_number}</strong>
+                        <span class="status status-${o.status}">${o.status}</span>
+                    </div>
+                    <div>Date: ${new Date(o.created_at).toLocaleDateString()}</div>
+                    <div>Total: $${o.total_amount}</div>
+                    <div>Payment: ${o.payment_status}</div>
+                    <details style="margin-top: 1rem;">
+                        <summary>Items (${o.items?.length || 0})</summary>
+                        ${o.items?.map(item => `<div>${item.quantity}x ${item.product_name} - $${item.price}</div>`).join('') || ''}
+                    </details>
+                </div>
+            `).join('') || '<div class="stat-card">No orders yet</div>';
+        }
+        
+        async function addToCart(productId) {
+            await apiCall('/cart', { method: 'POST', body: JSON.stringify({ product_id: productId, quantity: 1 }) });
+            showToast('Added to cart!', 'success');
+            loadCart();
+        }
+        
+        async function updateCartQuantity(cartId, quantity) {
+            if (quantity <= 0) {
+                await removeFromCart(cartId);
+                return;
+            }
+            await apiCall(`/cart/${cartId}`, { method: 'PUT', body: JSON.stringify({ quantity }) });
+            loadCart();
+        }
+        
+        async function removeFromCart(cartId) {
+            await apiCall(`/cart/${cartId}`, { method: 'DELETE' });
+            showToast('Removed from cart', 'success');
+            loadCart();
+        }
+        
+        async function toggleWishlist(productId) {
+            await apiCall('/wishlist', { method: 'POST', body: JSON.stringify({ product_id: productId }) });
+            loadWishlist();
+            renderProducts();
+        }
+        
+        let orders = [];
+        
+        function showCheckout() {
+            const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+            const modal = document.createElement('div');
+            modal.className = 'checkout-modal';
+            modal.innerHTML = `
+                <div class="checkout-card">
+                    <h2>Checkout</h2>
+                    <p>Total: $${total.toFixed(2)}</p>
+                    <div class="payment-methods">
+                        <div class="payment-method selected" data-method="card">💳 Credit Card</div>
+                        <div class="payment-method" data-method="paypal">💰 PayPal</div>
+                        <div class="payment-method" data-method="cod">📦 Cash on Delivery</div>
+                    </div>
+                    <input type="text" id="address" placeholder="Shipping Address" required>
+                    <input type="text" id="cardNumber" placeholder="Card Number (for card payment)">
+                    <button class="btn-cart" style="background:#3b82f6; width:100%; margin-top:1rem;" onclick="placeOrder()">Place Order</button>
+                    <button onclick="this.closest('.checkout-modal').remove()" style="margin-top:0.5rem; width:100%;">Cancel</button>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            modal.querySelectorAll('.payment-method').forEach(m => {
+                m.addEventListener('click', () => {
+                    modal.querySelectorAll('.payment-method').forEach(p => p.classList.remove('selected'));
+                    m.classList.add('selected');
+                });
+            });
+            
+            window.placeOrder = async () => {
+                const paymentMethod = modal.querySelector('.payment-method.selected').dataset.method;
+                const address = document.getElementById('address').value;
+                
+                if (!address) {
+                    showToast('Please enter shipping address', 'error');
+                    return;
+                }
+                
+                const items = cart.map(c => ({ product_id: c.product_id, name: c.name, quantity: c.quantity, price: c.price }));
+                
+                await apiCall('/orders', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        payment_method: paymentMethod,
+                        shipping_address: address,
+                        items: items,
+                        total_amount: total
+                    })
+                });
+                
+                showToast('Order placed successfully!', 'success');
+                modal.remove();
+                loadCart();
+                loadOrders();
+                updateDashboard();
+            };
+        }
+        
+        function showToast(message, type) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = `toast ${type} show`;
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+        
+        function updateCartCount() {
+            const count = cart.reduce((s, i) => s + i.quantity, 0);
+            document.getElementById('cartCount').textContent = `(${count})`;
+        }
+        
+        function logout() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            window.location.href = 'login.html';
+        }
+        
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', () => {
+                document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+                item.classList.add('active');
+                const section = item.dataset.section;
+                document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active'));
+                document.getElementById(`${section}Section`).classList.add('active');
+                document.getElementById('pageTitle').textContent = item.textContent.trim();
+            });
+        });
+        
+        if (!token) {
+            window.location.href = 'login.html';
+        } else {
+            loadUserData();
+        }
+    </script>
+</body>
+</html>
